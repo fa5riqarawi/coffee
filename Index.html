@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Math Cafe</title>
+  <meta name="description" content="Math Cafe — menu of waffles, pancakes, cupcakes, cookies, donuts, and churros." />
+
+  <style>
+    /* ----- Base / Reset ----- */
+    :root {
+      --bg: #b9c6ad;
+      --card: #d5dfcd;
+      --ink: #2f3e2f;
+      --ink-strong: #2b3d2b;
+      --ink-muted: #5a705a;
+      --white: #ffffff;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Poppins", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* ----- Layout ----- */
+    .container {
+      max-width: 960px;
+      margin: min(6vh, 48px) auto;
+      background: var(--card);
+      padding: clamp(16px, 4vw, 40px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    header { text-align: center; }
+    h1 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      margin: 0 0 .25rem 0;
+      color: var(--ink-strong);
+    }
+    h2 {
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      display: inline-block;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--ink-strong);
+      margin: .25rem 0 0 0;
+    }
+
+    /* Responsive grid automatically wraps cards */
+    .menu-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(12px, 2.5vw, 24px);
+      margin-top: clamp(16px, 3.5vw, 28px);
+    }
+
+    /* ----- Card ----- */
+    .item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      align-items: center;
+      gap: 14px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 12px;
+      transition: transform 200ms ease;
+    }
+    .item:hover { transform: translateY(-2px); }
+
+    /* On very small screens, stack image above text */
+    @media (max-width: 420px) {
+      .item { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    .item img {
+      width: 100%;
+      height: 100px;
+      max-width: 100px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .item-info h3 {
+      margin: 0 0 4px 0;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .item-info p {
+      margin: 4px 0 0 0;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    /* ----- Contact ----- */
+    .contact {
+      text-align: center;
+      margin-top: clamp(20px, 5vw, 40px);
+      font-size: 1rem;
+    }
+    .contact p { margin: 6px 0; }
+    .contact a { color: inherit; }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+
+    /* Dark mode (optional, follows system) */
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1e1f1b; --card: #2a2c24; --ink: #e6eee6; --ink-strong: #f0f7f0; --ink-muted: #b7c7b7; --white: #2f312a; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-labelledby="title">
+    <header>
+      <h1 id="title">Math Cafe</h1>
+      <h2>MENU</h2>
+    </header>
+
+    <section class="menu-section" aria-label="Menu items">
+      <!-- NOTE: Replace images/waffle.jpg with your actual image file placed under /images -->
+      <article class="item">
+        <img src="images/waffle.jpg" alt="Waffle on a plate" loading="lazy" />
+        <div class="item-info">
+          <h3>Waffle</h3>
+          <p>(-1,6), (4,8)</p>
+          <p>$4.50</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <img src="https://cdn.pixabay.com/photo/2015/09/02/12/27/pancakes-918531_640.jpg" alt="Stack of pancakes" loading="lazy" />
+        <div class="item-info">
+          <h3>Pancake</h3>
+          <p>(1,4), (2,1)</p>
+          <p>$5.00</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <img src="https://cdn.pixabay.com/photo/2017/02/15/10/39/cupcake-2068041_640.jpg" alt="Cupcake with frosting" loading="lazy" />
+        <div class="item-info">
+          <h3>Cupcake</h3>
+          <p>(6,-1), (2,0)</p>
+          <p>$4.25</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <img src="https://cdn.pixabay.com/photo/2016/03/05/22/32/cookies-1239300_640.jpg" alt="Cookies" loading="lazy" />
+        <div class="item-info">
+          <h3>Cookies</h3>
+          <p>(1,2), (2,8)</p>
+          <p>$3.50</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <img src="https://cdn.pixabay.com/photo/2016/03/05/22/34/donuts-1239308_640.jpg" alt="Donut with sprinkles" loading="lazy" />
+        <div class="item-info">
+          <h3>Donut</h3>
+          <p>(4,-5), (0,2)</p>
+          <p>$3.00</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <img src="https://cdn.pixabay.com/photo/2017/06/02/18/24/churros-2362538_640.jpg" alt="Churros" loading="lazy" />
+        <div class="item-info">
+          <h3>Churros</h3>
+          <p>(5,2), (4,1)</p>
+          <p>$3.00</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="contact" aria-label="Contact">
+      <p>📞 <a href="tel:+962787586549" rel="nofollow">0787586549</a></p>
+      <p lang="ar" dir="rtl">مدارس الحجاز</p>
+    </section>
+  </main>
+</body>
+</html>
